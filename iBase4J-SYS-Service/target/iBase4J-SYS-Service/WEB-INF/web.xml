@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <display-name>iBase4J</display-name>
+    <!--元素声明应用范围内的初始化参数-->
+    <!--
+        部署在同一容器中的Web项目，要配置不同的<param-value>，不能重复，否则报类似下面的错误:
+        Web app root system property already set to different value: 'webapp.root' = [/home/user/tomcat/webapps/project1/] instead of [/home/user/tomcat/webapps/project2/] - Choose unique values for the 'webAppRootKey' context-param in your web.xml files!
+        意思是“webapp.root”这个key已经指向了项目1，不可以再指向项目2.
+    -->
+    <context-param>
+        <!--目的：获取项目的动态路径-->
+        <param-name>webAppRootKey</param-name>
+        <!--
+        "iBase4J"这个字符串可以随便写任何字符串。如果不配置默认值是"webapp.root"。
+         可以用System.getProperty("webapp.root")来动态获项目的运行路径。
+         一般返回结果例如：/usr/local/tomcat6/webapps/项目名
+
+        在log4j.properties配置文件，就可以按下面的方式使用${webapp.root}：
+        log4j.appender.file.File=${webapp.root}/WEB-INF/logs/sample.log
+        就可以在运行时动态的找出项目的路径
+        -->
+        <param-value>iBase4J</param-value>
+    </context-param>
+
+    <context-param>
+        <!--contextConfigLocation 参数定义了要装入的 Spring 配置文件-->
+        <param-name>contextConfigLocation</param-name>
+        <!--
+        classpath：只会到你的class路径中查找找文件;
+        classpath*：不仅包含class路径，还包括jar文件中(class路径)进行查找.
+        则会去加载相应的xml,而不会去加载/WEB-INF/下的applicationContext.xml。
+        如果没有指定的话，默认会去/WEB-INF/下加载applicationContext.xml。
+        -->
+        <param-value>classpath:Spring-config.xml</param-value>
+    </context-param>
+
+    <filter>
+        <filter-name>DruidWebStatFilter</filter-name>
+        <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+        <init-param>
+            <param-name>exclusions</param-name>
+            <param-value>/druid/*</param-value>
+        </init-param>
+        <init-param>
+            <param-name>sessionStatEnable</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>profileEnable</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>DruidWebStatFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>DruidStatView</servlet-name>
+        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DruidStatView</servlet-name>
+        <url-pattern>/druid/*</url-pattern>
+    </servlet-mapping>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.ibase4j.core.listener.ServerListerner</listener-class>
+    </listener>
+</web-app>
