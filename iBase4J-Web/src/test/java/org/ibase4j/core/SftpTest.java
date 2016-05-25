@@ -7,15 +7,15 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@ComponentScan
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:Spring-test.xml" })
+//@ComponentScan
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = { "classpath:Spring-test.xml" })
 public class SftpTest {
 
-	@Test
+//	@Test
 	public void test() {
-		SftpClient client = SftpClient.connect();
+		/*SftpClient client = SftpClient.connect();
 		client.put("C:/Users/xsit/Desktop/Sticker.zip", "/usr/test123.tet");
-		client.disconnect();
+		client.disconnect();*/
 	}
 }

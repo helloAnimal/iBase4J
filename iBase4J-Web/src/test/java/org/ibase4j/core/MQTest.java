@@ -9,18 +9,18 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@ComponentScan
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:Spring-config.xml" })
+//@ComponentScan
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = { "classpath:Spring-config.xml" })
 public class MQTest {
-	@Autowired
+//	@Autowired
 	private QueueSender queueSender;
-	@Autowired
+//	@Autowired
 	private TopicSender topicSender;
 
-	@Test
+//	@Test
 	public void test() {
-		queueSender.send("ibase4j.queue", "test");
-		topicSender.send("ibase4j.topic", "test");
+		/*queueSender.send("ibase4j.queue", "test");
+		topicSender.send("ibase4j.topic", "test");*/
 	}
 }

@@ -11,10 +11,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Date: 2016/5/25
  * Time: 16:24
  */
-@RunWith(value = SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:Spring-config.xml"})
+//@RunWith(value = SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = {"classpath:Spring-config.xml"})
 public class DataSourceTest {
-    @Test
+//    @Test
     public void print(){
         System.out.println("******************");
     }

@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 
-@SuppressWarnings({ "serial", "unchecked" })
+//@SuppressWarnings({ "serial", "unchecked" })
 public class CombinationTest {
 
 	public static void main(String[] args) {
