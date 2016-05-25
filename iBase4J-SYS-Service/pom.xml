@@ -98,39 +98,39 @@
 				</resources>
 				<pluginManagement>
 					<plugins>
-						<plugin>
-							<groupId>org.apache.tomcat.maven</groupId>
-							<artifactId>tomcat7-maven-plugin</artifactId>
-							<version>2.2</version>
-							<executions>
-								<execution>
-									<id>run-war-only</id>
-									<phase>pre-integration-test</phase>
-									<goals>
-										<goal>run-war-only</goal>
-									</goals>
-								</execution>
-							</executions>
-							<configuration>
-								<warDirectory>target/${project.name}</warDirectory>
-								<path>/</path>
-								<contextReloadable>true</contextReloadable>
-								<uriEncoding>UTF-8</uriEncoding>
-								<port>${server.port}</port>
-								<systemProperties>
-									<webapps>
-										<webapp>
-											<groupId>${project.name}</groupId>
-											<artifactId>${project.name}</artifactId>
-											<version>${project.version}</version>
-											<type>${project.packaging}</type>
-											<asWebapp>true</asWebapp>
-											<contextPath>/</contextPath>
-										</webapp>
-									</webapps>
-								</systemProperties>
-							</configuration>
-						</plugin>
+						<!--<plugin>-->
+							<!--<groupId>org.apache.tomcat.maven</groupId>-->
+							<!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+							<!--<version>2.2</version>-->
+							<!--<executions>-->
+								<!--<execution>-->
+									<!--<id>run-war-only</id>-->
+									<!--<phase>pre-integration-test</phase>-->
+									<!--<goals>-->
+										<!--<goal>run-war-only</goal>-->
+									<!--</goals>-->
+								<!--</execution>-->
+							<!--</executions>-->
+							<!--<configuration>-->
+								<!--<warDirectory>target/${project.name}</warDirectory>-->
+								<!--<path>/</path>-->
+								<!--<contextReloadable>true</contextReloadable>-->
+								<!--<uriEncoding>UTF-8</uriEncoding>-->
+								<!--<port>${server.port}</port>-->
+								<!--<systemProperties>-->
+									<!--<webapps>-->
+										<!--<webapp>-->
+											<!--<groupId>${project.name}</groupId>-->
+											<!--<artifactId>${project.name}</artifactId>-->
+											<!--<version>${project.version}</version>-->
+											<!--<type>${project.packaging}</type>-->
+											<!--<asWebapp>true</asWebapp>-->
+											<!--<contextPath>/</contextPath>-->
+										<!--</webapp>-->
+									<!--</webapps>-->
+								<!--</systemProperties>-->
+							<!--</configuration>-->
+						<!--</plugin>-->
 					</plugins>
 				</pluginManagement>
 			</build>
