@@ -10,11 +10,11 @@ import com.alibaba.dubbo.config.spring.ServiceBean;
  */
 @SuppressWarnings("serial")
 public class DubboServiceBean<T> extends ServiceBean<T> {
-	public DubboServiceBean() {
-		super();
-	}
+    public DubboServiceBean() {
+        super();
+    }
 
-	public DubboServiceBean(DubboService service) {
-		appendAnnotation(DubboService.class, service);
-	}
+    public DubboServiceBean(DubboService service) {
+        appendAnnotation(DubboService.class, service);
+    }
 }

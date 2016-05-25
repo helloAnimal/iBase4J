@@ -7,8 +7,8 @@ import org.ibase4j.core.util.SecurityUtil;
  */
 public class SecurityUtilTest {
     public static void main(String[] args) {
-        System.out.println(SecurityUtil.encryptDes("123456"));
-        System.out.println("****************");
+//        System.out.println(SecurityUtil.encryptDes("123456"));
+//        System.out.println("****************");
 
     }
 }
