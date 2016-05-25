@@ -36,26 +36,33 @@
         <param-value>classpath:Spring-config.xml</param-value>
     </context-param>
 
+    <!--过滤器能够对目标资源的请求和响应进行截取-->
     <filter>
+        <!--WebStatFilter用于采集web-jdbc关联监控的数据-->
         <filter-name>DruidWebStatFilter</filter-name>
         <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
         <init-param>
+            <!--经常需要排除一些不必要的url，比如.js,/jslib/等等。配置在init-param中。-->
             <param-name>exclusions</param-name>
             <param-value>/druid/*</param-value>
         </init-param>
         <init-param>
+            <!--你可以关闭session统计功能-->
             <param-name>sessionStatEnable</param-name>
             <param-value>false</param-value>
         </init-param>
         <init-param>
+            <!--druid 0.2.7版本开始支持profile，配置profileEnable能够监控单个url调用的sql列表-->
             <param-name>profileEnable</param-name>
             <param-value>true</param-value>
         </init-param>
     </filter>
     <filter-mapping>
+        <!--经过/*的所有访问请求，都需要经过DruidWebStatFilter过滤器-->
         <filter-name>DruidWebStatFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    <!--sql监控-->
     <servlet>
         <servlet-name>DruidStatView</servlet-name>
         <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
@@ -64,9 +71,14 @@
         <servlet-name>DruidStatView</servlet-name>
         <url-pattern>/druid/*</url-pattern>
     </servlet-mapping>
+    <!--它能捕捉到服务器的启动和停止，在启动和停止触发里面的方法做相应的操作!-->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <!--
+        在Web应用程序关闭时IntrospectorCleanupListener将会刷新JDK的JavaBeans的Introspector缓存。
+        在你的web.xml中注册这个listener来确保Web应用程序的类加载器以及其加载的类正确的释放资源。
+    -->
     <listener>
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
     </listener>
