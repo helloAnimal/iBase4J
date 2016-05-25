@@ -1,16 +1,16 @@
 package org.ibase4j.core;
 
 import org.ibase4j.mybatis.generator.dao.SysUserMapper;
-import org.ibase4j.service.sys.SysUserService;
-import org.ibase4j.service.task.CoreTask;
+import org.ibase4j.mybatis.generator.model.SysUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.annotation.Resource;
+import java.util.List;
+
 
 /**
  * 描述：
@@ -21,15 +21,16 @@ import javax.annotation.Resource;
 @RunWith(value = SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:Spring-config.xml"})
 public class DataSourceTest {
-
     @Autowired
-    private CoreTask coreTask;
-//    private SysUserService sysUserService;
-
+    private ApplicationContext applicationContext;
     @Test
     public void print() {
-//        sysUserService.queryById(1);
-        coreTask.run();
+        SysUserMapper sysUserMapper= (SysUserMapper) applicationContext.getBean("sysUserMapper");
+        List<SysUser> sysUserList=sysUserMapper.selectAll();
+        for (SysUser sysUser:sysUserList){
+            System.out.println(sysUser.getUserName());
+            System.out.println(sysUser.getPassword());
+        }
         System.out.println("******************");
     }
 }
