@@ -20,7 +20,7 @@ public class MQTest {
 
 	@Test
 	public void test() {
-		/*queueSender.send("ibase4j.queue", "test");
-		topicSender.send("ibase4j.topic", "test");*/
+		queueSender.send("ibase4j.queue", "test");
+		topicSender.send("ibase4j.topic", "test");
 	}
 }

@@ -24,7 +24,7 @@ public class TopicSender {
 	/**
 	 * 发送一条消息到指定的队列（目标）
 	 * 
-	 * @param queueName 队列名称
+	 * @param topicName 队列名称
 	 * @param message 消息内容
 	 */
 	public void send(String topicName, final Serializable message) {
