@@ -241,6 +241,9 @@ public final class SecurityUtil {
         String org = decryptRSAPublic(encrypt, publicKey);
         System.out.println(org);
         System.out.println(verifyRSA(org, publicKey, sign));
+        System.out.println("密码："+encryptMd5("123456"));
+        System.out.println("密码："+SecurityUtil.encryptMd5(SecurityUtil.encryptSHA("123456")));
+
 
         // System.out.println("-------列出加密服务提供者-----");
         // Provider[] pro = Security.getProviders();

@@ -4,7 +4,7 @@
 	<artifactId>iBase4J-Web</artifactId>
 	<packaging>war</packaging>
 	<name>iBase4J-Web</name>
-	<url>http://maven.apache.org</url>
+	<!--<url>http://maven.apache.org</url>-->
 	
 	<parent>
 		<groupId>org.ibase4j</groupId>
