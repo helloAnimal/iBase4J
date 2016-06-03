@@ -1,5 +1,7 @@
 package org.ibase4j.core;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import org.ibase4j.facade.sys.SysUserFacade;
 import org.ibase4j.mybatis.generator.dao.SysUserMapper;
 import org.ibase4j.mybatis.generator.model.SysUser;
 import org.junit.Test;
@@ -23,6 +25,9 @@ import java.util.List;
 public class DataSourceTest {
     @Autowired
     private ApplicationContext applicationContext;
+    @Reference
+    private SysUserFacade sysUserFacade;
+
     @Test
     public void print() {
         SysUserMapper sysUserMapper= (SysUserMapper) applicationContext.getBean("sysUserMapper");
@@ -32,5 +37,14 @@ public class DataSourceTest {
             System.out.println(sysUser.getPassword());
         }
         System.out.println("******************");
+    }
+
+    @Test
+    public void dubboTest(){
+        SysUser sysUser=sysUserFacade.queryById(1);
+        System.out.println(sysUser.getUsable());
+        System.out.println(sysUser.getPassword());
+        System.out.println(sysUser.getAccount());
+        System.out.println("***************");
     }
 }
