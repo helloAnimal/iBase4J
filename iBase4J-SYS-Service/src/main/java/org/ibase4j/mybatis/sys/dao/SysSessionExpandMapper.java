@@ -12,6 +12,6 @@ public interface SysSessionExpandMapper {
 
 	Page<Integer> query(Map<String, Object> params);
 
-	SysSession queryBySessionId(String sessionId);
+	Integer queryBySessionId(String sessionId);
 
 }
